@@ -1,0 +1,21 @@
+{
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "frontend/dist",
+  "framework": "vite",
+  "devCommand": "npm run dev",
+  "functionsDirectory": "backend",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 200
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/index.html"
+    }
+  ],
+  "installCommand": "cd frontend && npm install --production=false"
+}
