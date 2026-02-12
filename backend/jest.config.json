@@ -1,0 +1,13 @@
+{
+  "testEnvironment": "node",
+  "collectCoverageFrom": [
+    "**/*.js",
+    "!node_modules/**",
+    "!tests/**",
+    "!coverage/**"
+  ],
+  "testMatch": [
+    "**/tests/**/*.test.js"
+  ],
+  "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"]
+}
