@@ -4,5 +4,18 @@
   "installCommand": "npm install --production=false",
   "framework": "vite",
   "devCommand": "npm run dev",
-  "functionsDirectory": "api"
+  "functionsDirectory": "api",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 200
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
