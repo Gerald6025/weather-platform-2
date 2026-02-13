@@ -1,10 +1,11 @@
 {
+  "version": 2,
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/dist",
   "framework": "vite",
   "devCommand": "cd frontend && npm run dev",
   "functionsDirectory": "backend",
-  "installCommand": "cd frontend && npm install --production=false",
+  "installCommand": "npm install && cd frontend && npm install --production=false",
   "routes": [
     {
       "src": "/api/(.*)",
@@ -21,5 +22,8 @@
       "source": "/(.*)",
       "destination": "/frontend/index.html"
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": true
+  }
 }
