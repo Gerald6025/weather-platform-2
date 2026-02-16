@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 function App() {
   const [locations, setLocations] = useState([]);
@@ -20,10 +20,16 @@ function App() {
     try {
       setError("");
       const response = await fetch(`${API_URL}/locations`);
+      
       if (!response.ok) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.error || "Failed to fetch locations");
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
+      
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Invalid response format from server");
+      }
+      
       const data = await response.json();
       setLocations(Array.isArray(data) ? data : []);
     } catch (err) {
