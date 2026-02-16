@@ -1,4 +1,4 @@
-const axious = require('axios');
+const axios = require('axios');
 
 const getCurrentWeather = async (city) => {
   try {
@@ -23,4 +23,25 @@ const getCurrentWeather = async (city) => {
   }
 };
 
-module.exports = { getCurrentWeather };
+const getForecast = async (city) => {
+  try {
+    const response = await axios.get(
+      "https://api.openweathermap.org/data/2.5/forecast",
+      {
+        params: {
+          q: city,
+          appid: process.env.OPENWEATHER_API_KEY,
+          units: "metric"
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Weather API unavailable");
+  }
+};
+
+module.exports = { getCurrentWeather, getForecast };

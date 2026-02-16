@@ -1,0 +1,9 @@
+node_modules/
+backend/.env
+backend/db.json
+dist/
+build/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
