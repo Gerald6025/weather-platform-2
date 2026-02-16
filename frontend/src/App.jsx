@@ -11,7 +11,7 @@ function App() {
   const [forecasts, setForecasts] = useState({});
   const [expandedLocation, setExpandedLocation] = useState(null);
 
-  // Fetch all locations on mount
+  
   useEffect(() => {
     fetchLocations();
   }, []);
@@ -146,7 +146,7 @@ function App() {
     <div className="app">
       <header className="header">
         <h1>Weather Platform</h1>
-        <p>Track weather across multiple cities</p>
+        
       </header>
 
       <main className="main">
